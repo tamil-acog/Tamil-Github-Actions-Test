@@ -9,9 +9,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+
   
 env:
   DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
@@ -30,7 +28,7 @@ jobs:
     steps:
       - name: cloning the repo
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       # Runs a set of commands using the runners shell
       - name: Authenticating
