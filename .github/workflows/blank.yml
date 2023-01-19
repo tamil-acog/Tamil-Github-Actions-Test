@@ -16,7 +16,7 @@ on:
 env:
   DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
   KNOWN_HOSTS: ${{secrets.KNOWN_HOSTS}}
-  HOST_NAME: $ {{secrets.HOST_NAME}}
+  HOST_NAME: ${{secrets.HOST_NAME}}
   
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -41,4 +41,4 @@ jobs:
           chmod 700 ~/.ssh/rsync_key
         
       - name: Deploy
-        run: rsync -avz -e "ssh -p 22" . awsvm:~/actions
+        run: rsync -avz . awsvm:~/actions
