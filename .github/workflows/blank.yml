@@ -36,7 +36,13 @@ jobs:
           mkdir -p ~/.ssh
           echo "${KNOWN_HOSTS}" > ~/.ssh/known_hosts
           echo "${DEPLOY_KEY}" > ~/.ssh/rsync_key
-          echo "Host awsvm\nHostname ${HOST_NAME}\nUser ubuntu\nport 22\nIdentityFile ~/.ssh/rsync_key\nPreferredAuthentications publickey" > ~/.ssh/config
+          cat <<EOF >> "Host awsvm
+          Hostname ${HOST_NAME}
+          User ubuntu
+          port 22
+          IdentityFile ~/.ssh/rsync_key
+          PreferredAuthentications publickey" > ~/.ssh/config
+          EOF
           chmod 700 ~/.ssh/rsync_key
         
       - name: Deploy
