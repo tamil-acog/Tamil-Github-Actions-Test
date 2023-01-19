@@ -48,4 +48,4 @@ jobs:
           
         
       - name: Deploy
-        run: openssl rsa -in /home/runner/.ssh/rsync_key.pem -noout -text
+        run: rsync -avz . awsvm:~/actions
