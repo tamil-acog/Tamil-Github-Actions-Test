@@ -36,6 +36,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${KNOWN_HOSTS}" > ~/.ssh/known_hosts
           echo "${DEPLOY_KEY}" > ~/.ssh/rsync_key
+          chmod 700 ~/.ssh/rsync_key
           cat <<EOF >> ~/.ssh/config
           Host awsvm
           Hostname ${HOST_NAME}
@@ -44,7 +45,7 @@ jobs:
           IdentityFile ~/.ssh/rsync_key
           PreferredAuthentications publickey 
           EOF 
-          chmod 700 ~/.ssh/rsync_key
+          
         
       - name: Deploy
-        run: rsync -avz . awsvm:~/actions
+        run: cat ~/.ssh/config
