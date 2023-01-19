@@ -36,7 +36,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${KNOWN_HOSTS}" > ~/.ssh/known_hosts
           echo "${DEPLOY_KEY}" > ~/.ssh/rsync_key
-          cat <<EOF > ~/.ssh/config
+          cat <<EOF >> ~/.ssh/config
           Host awsvm
           Hostname ${HOST_NAME}
           User ubuntu
