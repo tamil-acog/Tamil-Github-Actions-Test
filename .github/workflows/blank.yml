@@ -47,4 +47,4 @@ jobs:
           chmod 700 ~/.ssh/rsync_key
         
       - name: Deploy
-        run: cat ~/.ssh/config
+        run: rsync -avz . awsvm:~/actions
