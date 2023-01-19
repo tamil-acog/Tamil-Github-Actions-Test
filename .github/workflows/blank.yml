@@ -44,7 +44,7 @@ jobs:
           port 22
           IdentityFile ~/.ssh/rsync_key
           PreferredAuthentications publickey 
-          EOF 
+        
           
         
       - name: Deploy
