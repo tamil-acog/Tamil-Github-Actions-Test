@@ -33,6 +33,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Authenticating
         run: |
+          mkdir -p ~/.ssh
           echo "${KNOWN_HOSTS}" > ~/.ssh/known_hosts
           echo "${DEPLOY_KEY}" > ~/.ssh/rsync_key
           echo "Host awsvm\nHostname ${HOST_NAME}\nUser ubuntu\nport 22\nIdentityFile ~/.ssh/rsync_key\nPreferredAuthentications publickey" > ~/.ssh/config
