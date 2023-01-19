@@ -34,11 +34,10 @@ jobs:
       - name: Authenticating
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan ${HOST_NAME} > ~/.ssh/known_hosts
-          #echo "${KNOWN_HOSTS}" > ~/.ssh/known_hosts
+          echo "${KNOWN_HOSTS}" > ~/.ssh/known_hosts
           echo "${DEPLOY_KEY}" > ~/.ssh/rsync_key
           echo "Host awsvm\nHostname ${HOST_NAME}\nUser ubuntu\nport 22\nIdentityFile ~/.ssh/rsync_key\nPreferredAuthentications publickey" > ~/.ssh/config
           chmod 700 ~/.ssh/rsync_key
         
       - name: Deploy
-        run: rsync -avz . awsvm:~/actions
+        run: cat ~/.ssh/config
